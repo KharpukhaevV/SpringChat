@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello WebSocket</title>
+    <title>Spring MVC Chat</title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -9,15 +9,13 @@
     <script src="/app.js"></script>
 </head>
 <body>
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-    enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
 <div id="main-content" class="container">
     <h2 style="text-align: center; margin: 20px">Spring MVC chat</h2>
     <hr>
     <div class="row" style="margin-top: 30px">
         <div class="col-md-8">
-            <textarea class="form-control" rows="15" id="chat" readonly="readonly" data-bind="text: chatContent"></textarea>
+            <textarea class="form-control" rows="15" id="chat" readonly="readonly"
+                      data-bind="text: chatContent"></textarea>
         </div>
     </div>
     <div class="row" style="margin-top: 20px">
@@ -28,7 +26,9 @@
                     <input type="text" id="message" class="form-control" placeholder="Say...">
                     <input type="hidden" id="user" th:value="${user}">
                     <button id="send" class="btn btn-primary" type="submit" style="margin-top: 15px">Send</button>
-                    <button id="disconnect" class="btn btn-danger" type="submit" style="margin-top: 15px; margin-left: 70%;">Disconnect</button>
+                    <button id="disconnect" class="btn btn-danger" type="submit"
+                            style="margin-top: 15px; margin-left: 70%;">Disconnect
+                    </button>
                 </div>
             </form>
         </div>

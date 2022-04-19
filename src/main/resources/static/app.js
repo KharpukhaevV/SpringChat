@@ -5,7 +5,7 @@ stompClient.connect({}, function (frame) {
     setConnected(true);
     console.log('Connected: ' + frame);
     stompClient.subscribe('/chatting', function (send) {
-        showGreeting(JSON.parse(send.body).content);
+        showMessage(JSON.parse(send.body).content);
     });
 });
 
@@ -14,8 +14,7 @@ function setConnected(connected) {
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
         $("#conversation").show();
-    }
-    else {
+    } else {
         $("#conversation").hide();
     }
     $("#greetings").html("");
@@ -30,12 +29,12 @@ function disconnect() {
     location.replace("/");
 }
 
-function sendName() {
+function sendMessage() {
     stompClient.send("/app/msg", {}, JSON.stringify({'content': $("#message").val(), 'sender': $("#user").val()}));
     document.getElementById("message").value = "";
 }
 
-function showGreeting(message) {
+function showMessage(message) {
     var textarea = document.getElementById('chat');
     textarea.append("\n" + message);
     textarea.scrollTop = textarea.scrollHeight
@@ -45,6 +44,10 @@ $(function () {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
-    $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
+    $("#disconnect").click(function () {
+        disconnect();
+    });
+    $("#send").click(function () {
+        sendMessage();
+    });
 });

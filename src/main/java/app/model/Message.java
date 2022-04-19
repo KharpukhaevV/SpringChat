@@ -1,7 +1,5 @@
 package app.model;
 
-import javax.validation.constraints.NotNull;
-
 public class Message {
     private String content;
     private String sender;
@@ -13,6 +11,7 @@ public class Message {
     public Message(String content) {
         this.content = content;
     }
+
     public String getContent() {
         return content;
     }

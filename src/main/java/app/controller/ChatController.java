@@ -4,7 +4,6 @@ import app.model.Message;
 import app.model.User;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,7 @@ public class ChatController {
     }
 
     @PostMapping("/chat")
-    public String chat(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model){
+    public String chat(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "login";
         }
